@@ -1,0 +1,73 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "description": "Deje que DropCRM sea su asistente más poderoso para vender más por WhatsApp web.",
+  "version": "1.4.2",
+  "manifest_version": 3,
+  "name": "DropCRM",
+  "short_name": "DropCRM",
+  "background": {
+    "service_worker": "background.bundle.js"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "notifications",
+    "identity",
+    "identity.email",
+    "management",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "*://*.whatsapp.com/*",
+    "*://whatsup.plus/*",
+    "*://*.whatsapp.net/*",
+    "*://127.0.0.1/*",
+     "*://localhost/*" ,
+    "*://api-licenciasz-1.onrender.com/*"
+  ],
+  "action": {
+    "default_icon": "icon-34.png"
+  },
+  "chrome_url_overrides": {},
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.whatsapp.com/*"],
+      "js": ["environment.js", "contentScript.bundle.js"],
+      "css": ["content.styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icon-128.png",
+        "icon-48.png",
+        "icon-16.png",
+        "icon-34.png",
+        "images/*",
+        "content.styles.css",
+        "inject.styles.css",
+        "injectScript.bundle.js",
+        "contact_upload.csv",
+        "contact_upload.xlsx"
+      ],
+      "matches": ["*://*.whatsapp.com/*"]
+    }
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArv4ojWkgXATyCYhMC5ftaFS5aRIcu5KCgSfcDJSHupiug5bZWdqfKEiSk+vb9gzvj+mgZjZw9olyCS/BWDfgm/0EM6DcoFJxRBfRjXWIPAws0pcuNXk4wrDEAcL8yyy2FrYO9KBdMGzJ9ypScpNZsvTGNHnBkLwF8tP8lnD+/M4r1FPVMxgijQxe4481uNkQFAS9G/6xfiUPZY8Cosva0/xKzDncVyhH+agu8gfbOKaAEuelWPoSM7yHmbI+jaWJe2UjGFk56gf6aKWg0YHgUJK1KJD42Q9/nCwgjonZ0ri0zJW2P1EJ8qZ0jcjausc6NpXqBzxkRR6iFQxscCL3ywIDAQAB",
+  "oauth2": {
+    "client_id": "134676342954-r4ihej9ssse8mae934qhv9kk08vajgrp.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/contacts",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
+    ]
+  }
+}
